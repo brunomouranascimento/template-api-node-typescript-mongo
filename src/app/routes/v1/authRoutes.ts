@@ -7,6 +7,6 @@ const authRouter = Router();
 
 authRouter.use(AuthMiddleware);
 
-authRouter.post('/authenticate', AuthController.authenticate);
+authRouter.post('/', AuthController.authenticate);
 
 export default authRouter;

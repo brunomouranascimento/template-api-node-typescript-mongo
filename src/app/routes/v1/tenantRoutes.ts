@@ -7,7 +7,7 @@ const tenantRouter = Router();
 
 tenantRouter.use(AuthMiddleware);
 
-tenantRouter.post('/create', TenantController.store);
+tenantRouter.post('/', TenantController.store);
 tenantRouter.get('/:id', TenantController.show);
 tenantRouter.get('/', TenantController.index);
 tenantRouter.patch('/:id', TenantController.update);

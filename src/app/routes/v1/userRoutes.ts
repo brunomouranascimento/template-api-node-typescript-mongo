@@ -7,7 +7,7 @@ const userRouter = Router();
 
 userRouter.use(AuthMiddleware);
 
-userRouter.post('/register', UserController.store);
+userRouter.post('/', UserController.store);
 userRouter.get('/', UserController.index);
 userRouter.get('/:id', UserController.show);
 userRouter.delete('/:id', UserController.destroy);

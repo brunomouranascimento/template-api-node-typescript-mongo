@@ -7,8 +7,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
   try {
     const authHeader = req.headers.authorization;
     if (
-      req.originalUrl === '/v1/auth/authenticate' ||
-      req.originalUrl === '/v1/users/register' ||
+      (req.originalUrl === '/v1/auth' && req.method !== 'GET') ||
+      (req.originalUrl === '/v1/users' && req.method !== 'GET') ||
       req.originalUrl === '/v1/users/forgot-password' ||
       req.originalUrl.includes('/v1/users/reset-password') ||
       req.originalUrl.includes('/v1/users/check-token')
