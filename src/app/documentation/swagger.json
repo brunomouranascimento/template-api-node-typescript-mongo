@@ -4,6 +4,10 @@
     "version": "1.0.0",
     "title": "Node.js template API",
     "description": "This is a documentation of Node.js template API",
+    "termsOfService": "http://localhost:3333/terms",
+    "contact": {
+      "email": "bruno.bmn@gmail.com"
+    },
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
