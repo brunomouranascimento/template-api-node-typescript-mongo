@@ -1,6 +1,6 @@
 import { Response } from 'express';
 
-export default interface IResponse<T> extends Response {
+export default interface ResponseData<T> extends Response {
   httpCode: number;
   message: string;
   notificationLevel: string;

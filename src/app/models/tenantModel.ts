@@ -1,5 +1,4 @@
 import mongoose from '@database/database';
-import { ITenant } from '@interfaces';
 
 const TenantSchema = new mongoose.Schema({
   name: {
@@ -24,6 +23,6 @@ const TenantSchema = new mongoose.Schema({
   },
 });
 
-const Tenant = mongoose.model<ITenant>('Tenant', TenantSchema);
+const Tenant = mongoose.model('Tenant', TenantSchema);
 
 export default Tenant;

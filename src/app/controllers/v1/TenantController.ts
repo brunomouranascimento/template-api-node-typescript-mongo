@@ -3,10 +3,10 @@ import { Request, Response } from 'express';
 import TenantService from '@services/TenantService';
 import ApiResponse from '@core/ApiResponse';
 
-import { IResponse, ITenant } from '@interfaces';
+import { ResponseData, Tenant } from '@interfaces';
 
 class TenantController {
-  async store(req: Request, res: Response): Promise<IResponse<ITenant>> {
+  async store(req: Request, res: Response): Promise<ResponseData<Tenant>> {
     try {
       const data = await TenantService.store(req.body);
       return ApiResponse.send(201, req, res, data);
@@ -16,7 +16,7 @@ class TenantController {
     }
   }
 
-  async index(req: Request, res: Response): Promise<IResponse<[ITenant]>> {
+  async index(req: Request, res: Response): Promise<ResponseData<[Tenant]>> {
     try {
       const data = await TenantService.index();
       return ApiResponse.send(200, req, res, data);
@@ -26,7 +26,7 @@ class TenantController {
     }
   }
 
-  async show(req: Request, res: Response): Promise<IResponse<ITenant>> {
+  async show(req: Request, res: Response): Promise<ResponseData<Tenant>> {
     try {
       const data = await TenantService.show(req.params.id);
       return ApiResponse.send(200, req, res, data);
@@ -36,7 +36,7 @@ class TenantController {
     }
   }
 
-  async update(req: Request, res: Response): Promise<IResponse<ITenant>> {
+  async update(req: Request, res: Response): Promise<ResponseData<Tenant>> {
     try {
       const data = await TenantService.update(req.params.id, req.body);
       return ApiResponse.send(200, req, res, data);
@@ -46,7 +46,7 @@ class TenantController {
     }
   }
 
-  async destroy(req: Request, res: Response): Promise<IResponse<void>> {
+  async destroy(req: Request, res: Response): Promise<ResponseData<void>> {
     try {
       const data = await TenantService.destroy(req.params.id);
       return ApiResponse.send(200, req, res, data);

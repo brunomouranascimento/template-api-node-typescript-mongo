@@ -1,6 +1,4 @@
-import mongoose from '@database/database';
-
-export default interface Tenant extends mongoose.Document {
+export default interface Tenant {
   name: string;
   cnpj: string;
   email: string;

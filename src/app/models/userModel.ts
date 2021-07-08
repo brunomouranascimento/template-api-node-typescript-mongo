@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 
 import mongoose from '@database/database';
-import { IUser } from '@interfaces';
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -39,13 +38,12 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.pre<IUser>('save', async function (next) {
-  const user = this as IUser;
-  const hash = await bcrypt.hash(user.password, 10);
-  user.password = hash;
+UserSchema.pre<any>('save', async function (next) {
+  const hash = await bcrypt.hash(this.password, 10);
+  this.password = hash;
   next();
 });
 
-const User = mongoose.model<IUser>('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 export default User;

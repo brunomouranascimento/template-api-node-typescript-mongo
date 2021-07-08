@@ -1,11 +1,11 @@
-import mongoose from '@database/database';
+import { Tenant } from '@interfaces';
 
-export default interface User extends mongoose.Document {
-  id: mongoose.ObjectId;
+export default interface User {
+  _id: string;
   name: string;
   email: string;
   password: string;
-  tenants: mongoose.ObjectId;
+  tenants: [Tenant];
   token: string;
   passwordResetToken: string;
   passwordResetExpires: Date;

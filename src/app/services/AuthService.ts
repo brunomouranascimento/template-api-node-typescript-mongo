@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import AuthRepository from '@repositories/AuthRepository';
 import TenantRepository from '@repositories/TenantRepository';
 import { ApiException } from '@core/ApiException';
+import { User } from '@interfaces';
 
 const generateToken = (params = {}) => {
   return jwt.sign(params, process.env.JWT_SECRET, {
@@ -22,7 +23,9 @@ class AuthService {
 
       if (!tenantExists) throw new ApiException(5002, 'BusinessResponse');
 
-      const user = await AuthRepository.findUserWithPassword(userData);
+      const user = (await AuthRepository.findUserWithPassword(
+        userData,
+      )) as User;
 
       if (!user) throw new ApiException(4015, 'BusinessResponse');
 

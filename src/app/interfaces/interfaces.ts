@@ -1,5 +1,5 @@
-import IResponse from './responseInterface';
-import IUser from './userInterface';
-import ITenant from './tenantInterface';
+import ResponseData from './responseInterface';
+import User from './userInterface';
+import Tenant from './tenantInterface';
 
-export { IResponse, ITenant, IUser };
+export { ResponseData, Tenant, User };

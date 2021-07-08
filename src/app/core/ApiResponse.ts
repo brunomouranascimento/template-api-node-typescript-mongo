@@ -1,7 +1,7 @@
 import Localize from '@core/Localize';
 import { businessMessages } from '@core/businessMessages';
 import { dataMessages } from '@core/dataMessages';
-import { IResponse } from '@interfaces';
+import { ResponseData } from '@interfaces';
 
 class ApiResponse {
   send(
@@ -11,7 +11,7 @@ class ApiResponse {
     data?,
     apiErrors?,
     type = 'BusinessResponse',
-  ): Promise<IResponse<any>> {
+  ): Promise<ResponseData<any>> {
     const messages =
       type === 'BusinessResponse' ? businessMessages : dataMessages;
 

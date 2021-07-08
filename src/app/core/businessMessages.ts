@@ -3,6 +3,10 @@ export const businessMessages = {
     status: 'success',
     httpCode: 200,
   },
+  201: {
+    status: 'success',
+    httpCode: 201,
+  },
   401: {
     status: 'error',
     message: {

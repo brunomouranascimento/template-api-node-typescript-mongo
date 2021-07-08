@@ -1,4 +1,5 @@
 import { ApiException } from '@core/ApiException';
+import { Tenant } from '@interfaces';
 import TenantRepository from '@repositories/TenantRepository';
 
 class TenantService {
@@ -21,7 +22,7 @@ class TenantService {
 
   async index() {
     try {
-      return await TenantRepository.index();
+      return (await TenantRepository.index()) as [Tenant];
     } catch (error) {
       throw new ApiException(error.code, error.type);
     }
@@ -29,7 +30,7 @@ class TenantService {
 
   async show(id) {
     try {
-      const tenant = await TenantRepository.show(id);
+      const tenant = (await TenantRepository.show(id)) as Tenant;
 
       if (!tenant) throw new ApiException(5002, 'BusinessResponse');
 

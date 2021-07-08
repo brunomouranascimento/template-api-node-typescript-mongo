@@ -3,10 +3,10 @@ import { Request, Response } from 'express';
 import UserService from '@services/UserService';
 import ApiResponse from '@core/ApiResponse';
 
-import { IResponse, IUser } from '@interfaces';
+import { ResponseData, User } from '@interfaces';
 
 class UserController {
-  async store(req: Request, res: Response): Promise<IResponse<IUser>> {
+  async store(req: Request, res: Response): Promise<ResponseData<User>> {
     try {
       const data = await UserService.store(req.body);
       return ApiResponse.send(201, req, res, data);
@@ -16,7 +16,7 @@ class UserController {
     }
   }
 
-  async index(req: Request, res: Response): Promise<IResponse<IUser[]>> {
+  async index(req: Request, res: Response): Promise<ResponseData<[User]>> {
     try {
       const data = await UserService.index();
       return ApiResponse.send(200, req, res, data);
@@ -26,7 +26,7 @@ class UserController {
     }
   }
 
-  async show(req: Request, res: Response): Promise<IResponse<IUser>> {
+  async show(req: Request, res: Response): Promise<ResponseData<User>> {
     try {
       const data = await UserService.show(req.params.id);
       return ApiResponse.send(200, req, res, data);
@@ -36,7 +36,7 @@ class UserController {
     }
   }
 
-  async destroy(req: Request, res: Response): Promise<IResponse<IUser>> {
+  async destroy(req: Request, res: Response): Promise<ResponseData<User>> {
     try {
       const data = await UserService.destroy(req.params.id);
       return ApiResponse.send(200, req, res, data);
