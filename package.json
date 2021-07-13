@@ -7,7 +7,7 @@
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev": "ts-node-dev -r dotenv/config -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/app/server.ts",
-    "start": "ts-node src/app/server.ts",
+    "start": "ts-node -r dotenv/config src/app/server.ts",
     "test": "jest --coverage",
     "lint": "eslint --fix --ext .ts,.tsx ."
   },
