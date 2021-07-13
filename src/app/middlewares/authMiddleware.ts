@@ -28,11 +28,15 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       return ApiResponse.send(4013, req, res);
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (error: any, decoded: any) => {
-      if (error) return ApiResponse.send(401, req, res);
-      req.user = decoded.user;
-      return next();
-    });
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET || 'JWT_SECRET',
+      (error: any, decoded: any) => {
+        if (error) return ApiResponse.send(401, req, res);
+        req.user = decoded.user;
+        return next();
+      },
+    );
   } catch (error) {
     const { errors, type } = error;
     return ApiResponse.send(4014, req, res, null, errors, type);

@@ -1,7 +1,4 @@
 import Mongoose from 'mongoose';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
 
 const connect = () => {
   Mongoose.connect(process.env.DATABASE || 'LOCALDATABASE', {
