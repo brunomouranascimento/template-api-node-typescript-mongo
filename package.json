@@ -1,5 +1,5 @@
 {
-  "name": "template-api",
+  "name": "template-api-node-typescript-mongo",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Bruno Nascimento",
