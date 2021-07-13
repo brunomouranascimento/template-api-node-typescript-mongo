@@ -2,9 +2,10 @@ import UserRepository from '@repositories/UserRepository';
 import { validEmail } from '@utils/util';
 import { ApiException } from '@core/ApiException';
 import { User } from '@interfaces';
+import { NewUserDTO } from '@dtos';
 
 class UserService {
-  async store(newUserData) {
+  async store(newUserData: NewUserDTO) {
     try {
       const { email } = newUserData;
 
@@ -17,10 +18,7 @@ class UserService {
 
       await UserRepository.store(newUserData);
 
-      const newUser = (await UserRepository.showByEmail(email)) as User;
-
-      delete newUser.password;
-      return newUser;
+      return (await UserRepository.showByEmail(email)) as User;
     } catch (error) {
       throw new ApiException(error.code, error.type);
     }
@@ -34,7 +32,7 @@ class UserService {
     }
   }
 
-  async show(id) {
+  async show(id: string) {
     try {
       const user = (await UserRepository.show(id)) as User;
 
@@ -46,7 +44,7 @@ class UserService {
     }
   }
 
-  async destroy(id) {
+  async destroy(id: string) {
     try {
       const user = await UserRepository.show(id);
 

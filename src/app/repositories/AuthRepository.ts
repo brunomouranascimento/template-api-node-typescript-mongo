@@ -1,8 +1,9 @@
 import User from '@models/userModel';
 import { ApiException } from '@core/ApiException';
+import { NewUserDTO } from '@dtos';
 
 class AuthRepository {
-  async findUserWithPassword(userData) {
+  async findUserWithPassword(userData: NewUserDTO) {
     try {
       const { email } = userData;
 

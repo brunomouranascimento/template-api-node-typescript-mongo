@@ -2,7 +2,7 @@ import _ from 'lodash';
 import parser from 'accept-language-parser';
 
 class Localize {
-  localize(object, languages, defaultLanguage) {
+  localize(object: any, languages: any, defaultLanguage: string) {
     const selectedLanguage = languages[0]?.code || null;
 
     return {
@@ -13,7 +13,7 @@ class Localize {
     };
   }
 
-  prepareAcceptLanguageHeader(acceptLanguageHeaders) {
+  prepareAcceptLanguageHeader(acceptLanguageHeaders: string) {
     return _.sortBy(parser.parse(acceptLanguageHeaders), '-quality');
   }
 }

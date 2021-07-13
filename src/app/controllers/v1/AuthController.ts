@@ -12,7 +12,7 @@ class AuthController {
       return ApiResponse.send(200, req, res, data);
     } catch (error) {
       const { code, errors, type } = error;
-      return ApiResponse.send(code, req, res, null, errors, type);
+      return ApiResponse.send(code, req, res, undefined, errors, type);
     }
   }
 }

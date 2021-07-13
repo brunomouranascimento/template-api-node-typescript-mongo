@@ -8,10 +8,10 @@ const connect = () => {
     useFindAndModify: false,
   })
     .then(() => {
-      return console.log('✅ - Connected to Database');
+      return console.info('✅ - Connected to Database');
     })
     .catch(error => {
-      console.log(
+      console.error(
         `❌ - An error has ocurred on connecting to Database: ${error.message}`,
       );
       return process.exit(1);

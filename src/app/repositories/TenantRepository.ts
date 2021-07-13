@@ -1,8 +1,9 @@
 import Tenant from '@models/tenantModel';
 import { ApiException } from '@core/ApiException';
+import { NewTenantDTO } from '@dtos';
 
 class TenantRepository {
-  async store(newTenantData) {
+  async store(newTenantData: NewTenantDTO) {
     try {
       return await Tenant.create(newTenantData);
     } catch (error) {
@@ -18,7 +19,7 @@ class TenantRepository {
     }
   }
 
-  async show(id) {
+  async show(id: string) {
     try {
       return await Tenant.findById(id).lean().exec();
     } catch (error) {
@@ -26,7 +27,7 @@ class TenantRepository {
     }
   }
 
-  async update(id, tenantData) {
+  async update(id: string, tenantData: NewTenantDTO) {
     try {
       const { name, cnpj, email } = tenantData;
 
@@ -36,7 +37,7 @@ class TenantRepository {
     }
   }
 
-  async destroy(id) {
+  async destroy(id: string) {
     try {
       await Tenant.findByIdAndRemove(id);
     } catch (error) {
@@ -44,7 +45,7 @@ class TenantRepository {
     }
   }
 
-  async showByCNPJ(cnpj) {
+  async showByCNPJ(cnpj: string) {
     try {
       return await Tenant.findOne({ cnpj }).lean().exec();
     } catch (error) {

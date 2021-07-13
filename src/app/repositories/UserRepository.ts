@@ -1,8 +1,9 @@
 import User from '@models/userModel';
 import { ApiException } from '@core/ApiException';
+import { NewUserDTO } from '@dtos';
 
 class UserRepository {
-  async store(newUserData) {
+  async store(newUserData: NewUserDTO) {
     try {
       return await User.create(newUserData);
     } catch (error) {
@@ -18,7 +19,7 @@ class UserRepository {
     }
   }
 
-  async show(id) {
+  async show(id: string) {
     try {
       return await User.findById(id).lean().exec();
     } catch (error) {
@@ -26,7 +27,7 @@ class UserRepository {
     }
   }
 
-  async destroy(id) {
+  async destroy(id: string) {
     try {
       await User.findByIdAndRemove(id);
     } catch (error) {
@@ -34,7 +35,7 @@ class UserRepository {
     }
   }
 
-  async findUserWithPassword(userData) {
+  async findUserWithPassword(userData: NewUserDTO) {
     try {
       const { email } = userData;
 
@@ -44,7 +45,7 @@ class UserRepository {
     }
   }
 
-  async showByEmail(email) {
+  async showByEmail(email: string) {
     try {
       return await User.findOne({ email }).lean().exec();
     } catch (error) {

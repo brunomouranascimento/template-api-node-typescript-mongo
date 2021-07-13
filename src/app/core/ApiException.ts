@@ -1,5 +1,11 @@
 export class ApiException extends Error {
-  constructor(private code, private type, private errors?) {
+  code: number;
+
+  type: string;
+
+  errors: Array<string> | undefined;
+
+  constructor(code: number, type: string, errors?: Array<string>) {
     super();
     this.code = code;
     this.type = type;

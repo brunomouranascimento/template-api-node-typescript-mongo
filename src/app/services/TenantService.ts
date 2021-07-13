@@ -1,9 +1,10 @@
 import { ApiException } from '@core/ApiException';
 import { Tenant } from '@interfaces';
 import TenantRepository from '@repositories/TenantRepository';
+import { NewTenantDTO } from '@dtos';
 
 class TenantService {
-  async store(newTenantData) {
+  async store(newTenantData: NewTenantDTO) {
     try {
       const { name, cnpj, email } = newTenantData;
 
@@ -28,7 +29,7 @@ class TenantService {
     }
   }
 
-  async show(id) {
+  async show(id: string) {
     try {
       const tenant = (await TenantRepository.show(id)) as Tenant;
 
@@ -40,7 +41,7 @@ class TenantService {
     }
   }
 
-  async update(id, tenantData) {
+  async update(id: string, tenantData: NewTenantDTO) {
     try {
       const tenant = await TenantRepository.show(id);
 
@@ -52,7 +53,7 @@ class TenantService {
     }
   }
 
-  async destroy(id) {
+  async destroy(id: string) {
     try {
       const tenant = await TenantRepository.show(id);
 

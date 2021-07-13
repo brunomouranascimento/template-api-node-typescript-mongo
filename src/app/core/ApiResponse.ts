@@ -1,49 +1,64 @@
 import Localize from '@core/Localize';
-import { businessMessages } from '@core/businessMessages';
-import { dataMessages } from '@core/dataMessages';
+import businessMessages from '@core/businessMessages';
+import dataMessages from '@core/dataMessages';
 import { ResponseData } from '@interfaces';
 
 class ApiResponse {
   send(
-    responseCode,
-    req,
-    res,
-    data?,
-    apiErrors?,
+    responseCode: number,
+    req: any,
+    res: any,
+    data?: any,
+    apiErrors?: Array<any>,
     type = 'BusinessResponse',
   ): Promise<ResponseData<any>> {
-    const messages =
-      type === 'BusinessResponse' ? businessMessages : dataMessages;
-
     const language = Localize.prepareAcceptLanguageHeader(
       req.headers['accept-language'],
     );
 
-    let response = {
-      httpCode: 500,
-      message: null,
-      notificationLevel: null,
+    interface Response {
+      httpCode: number;
+      message?: any;
+      notificationLevel: string;
+      errors?: Array<any>;
+      data?: any;
+      BusinessResponse?: number;
+      DataResponse?: number;
+    }
+
+    let response: Response = {
+      httpCode: 0,
+      notificationLevel: '',
       errors: [],
+      BusinessResponse: 0,
+      DataResponse: 0,
     };
 
-    const message = messages[responseCode].message;
-    if (message) response['message'] = message;
+    const selectedResponse =
+      type === 'BusinessResponse'
+        ? businessMessages().find((m: any) => m.responseCode === responseCode)
+        : dataMessages().find((m: any) => m.responseCode === responseCode);
 
-    const status = messages[responseCode].status;
-    if (status) response['notificationLevel'] = status;
-
-    const messageHttpCode = messages[responseCode].httpCode;
-    if (messageHttpCode) response.httpCode = messageHttpCode;
+    if (selectedResponse) {
+      if (type === 'BusinessResponse') {
+        response.BusinessResponse = responseCode;
+        delete response.DataResponse;
+      } else {
+        response.DataResponse = responseCode;
+        delete response.BusinessResponse;
+      }
+      response.message = selectedResponse.message;
+      response.notificationLevel = selectedResponse.status;
+      response.httpCode = selectedResponse.httpCode;
+    }
 
     response = Localize.localize(response, language, 'en');
 
-    if (apiErrors) response['errors'] = apiErrors;
+    if (apiErrors) response.errors = apiErrors;
 
-    if (!apiErrors) delete response['errors'];
+    if (!apiErrors) delete response.errors;
 
-    if (data) response['data'] = data;
-
-    response[type] = responseCode;
+    if (data) response.data = data;
 
     return res.status(response.httpCode).json(response);
   }

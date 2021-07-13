@@ -24,6 +24,7 @@
       "@repositories/*": ["./src/app/repositories/*"],
       "@services/*": ["./src/app/services/*"],
       "@interfaces": ["./src/app/interfaces/interfaces"],
+      "@dtos": ["./src/app/dtos/dtos"],
       "@middlewares/*": ["./src/app/middlewares/*"],
       "@utils/*": ["./src/app/utils/*"],
       "@documentation/*": ["./src/app/documentation/*"],
