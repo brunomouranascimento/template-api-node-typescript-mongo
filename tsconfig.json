@@ -31,7 +31,5 @@
       "@core/*": ["./src/app/core/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
