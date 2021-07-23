@@ -5,7 +5,7 @@ import cors from 'cors';
 import routes from '@routes';
 
 const app: Application = express();
-const port = 3333 || process.env.PORT;
+const port = process.env.PORT || 3333;
 
 app.use(compression());
 app.use(express.json());
