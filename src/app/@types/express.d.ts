@@ -3,5 +3,6 @@ declare namespace Express {
     user: {
       _id: string;
     };
+    tenant: string;
   }
 }

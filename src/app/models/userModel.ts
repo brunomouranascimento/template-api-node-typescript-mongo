@@ -36,6 +36,9 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     select: false,
   },
+  isAdmin: {
+    type: Boolean,
+  },
 });
 
 UserSchema.pre<any>('save', async function (next) {

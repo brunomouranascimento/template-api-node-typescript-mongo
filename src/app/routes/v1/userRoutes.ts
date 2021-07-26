@@ -10,6 +10,7 @@ userRouter.use(AuthMiddleware);
 userRouter.post('/', UserController.store);
 userRouter.get('/', UserController.index);
 userRouter.get('/:id', UserController.show);
+userRouter.get('/:id', UserController.update);
 userRouter.delete('/:id', UserController.destroy);
 // userRouter.post('/forgot-password', UserController.forgotPassword);
 // userRouter.post('/reset-password/:token', UserController.resetPassword);

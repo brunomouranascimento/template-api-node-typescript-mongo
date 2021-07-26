@@ -1,11 +1,11 @@
 import User from '@models/userModel';
 import { ApiException } from '@core/ApiException';
-import { NewUserDTO } from '@dtos';
+import { AuthDTO } from '@dtos';
 
 class AuthRepository {
-  async findUserWithPassword(userData: NewUserDTO) {
+  async findUserWithPassword(authData: AuthDTO) {
     try {
-      const { email } = userData;
+      const { email } = authData;
 
       return await User.findOne({ email }).select('+password').lean().exec();
     } catch (error) {

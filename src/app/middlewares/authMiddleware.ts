@@ -34,6 +34,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       (error: any, decoded: any) => {
         if (error) return ApiResponse.send(401, req, res);
         req.user = decoded.user;
+        req.tenant = decoded.tenant;
         return next();
       },
     );

@@ -44,6 +44,18 @@ class UserService {
     }
   }
 
+  async update(id: string, userData: NewUserDTO) {
+    try {
+      const tenant = await UserRepository.show(id);
+
+      if (!tenant) throw new ApiException(5002, 'BusinessResponse');
+
+      return await UserRepository.update(id, userData);
+    } catch (error) {
+      throw new ApiException(error.code, error.type);
+    }
+  }
+
   async destroy(id: string) {
     try {
       const user = await UserRepository.show(id);

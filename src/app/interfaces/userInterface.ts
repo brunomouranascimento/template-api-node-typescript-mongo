@@ -9,4 +9,5 @@ export default interface User {
   token: string;
   passwordResetToken: string;
   passwordResetExpires: Date;
+  isAdmin: boolean;
 }

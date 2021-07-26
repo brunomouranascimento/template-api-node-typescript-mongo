@@ -5,25 +5,28 @@ import UserRepository from '@repositories/UserRepository';
 import TenantRepository from '@repositories/TenantRepository';
 import { ApiException } from '@core/ApiException';
 import { User } from '@interfaces';
-import { NewUserDTO } from '@dtos';
+import { AuthDTO } from '@dtos';
 import { generateToken } from '@utils/util';
 
 class AuthService {
-  async authenticate(userData: NewUserDTO) {
+  async authenticate(authData: AuthDTO) {
     try {
-      const { email, password, tenant } = userData;
-
-      if (!tenant) throw new ApiException(4020, 'BusinessResponse');
-
-      const tenantExists = await TenantRepository.show(tenant);
-
-      if (!tenantExists) throw new ApiException(5002, 'BusinessResponse');
+      const { email, password, tenant } = authData;
 
       const userExists = (await AuthRepository.findUserWithPassword(
-        userData,
+        authData,
       )) as User;
 
       if (!userExists) throw new ApiException(4015, 'BusinessResponse');
+
+      if (!tenant && !userExists.isAdmin)
+        throw new ApiException(4020, 'BusinessResponse');
+
+      if (!userExists.isAdmin) {
+        const tenantExists = await TenantRepository.show(tenant);
+
+        if (!tenantExists) throw new ApiException(5002, 'BusinessResponse');
+      }
 
       if (!(await bcrypt.compare(password, userExists.password))) {
         throw new ApiException(4016, 'BusinessResponse');

@@ -29,9 +29,7 @@ class TenantRepository {
 
   async update(id: string, tenantData: NewTenantDTO) {
     try {
-      const { name, cnpj, email } = tenantData;
-
-      return Tenant.findByIdAndUpdate(id, { name, cnpj, email }, { new: true });
+      return Tenant.findByIdAndUpdate(id, { tenantData }, { new: true });
     } catch (error) {
       throw new ApiException(2002, 'DataResponse', [error.message]);
     }

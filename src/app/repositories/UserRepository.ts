@@ -27,6 +27,14 @@ class UserRepository {
     }
   }
 
+  async update(id: string, userData: NewUserDTO) {
+    try {
+      return User.findByIdAndUpdate(id, { userData }, { new: true });
+    } catch (error) {
+      throw new ApiException(2002, 'DataResponse', [error.message]);
+    }
+  }
+
   async destroy(id: string) {
     try {
       await User.findByIdAndRemove(id);
