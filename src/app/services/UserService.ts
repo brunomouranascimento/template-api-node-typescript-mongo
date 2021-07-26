@@ -46,9 +46,9 @@ class UserService {
 
   async update(id: string, userData: NewUserDTO) {
     try {
-      const tenant = await UserRepository.show(id);
+      const user = await UserRepository.show(id);
 
-      if (!tenant) throw new ApiException(5002, 'BusinessResponse');
+      if (!user) throw new ApiException(5002, 'BusinessResponse');
 
       return await UserRepository.update(id, userData);
     } catch (error) {
