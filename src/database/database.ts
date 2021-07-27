@@ -1,7 +1,7 @@
 import Mongoose from 'mongoose';
 
 const connect = () => {
-  Mongoose.connect(process.env.DATABASE || 'LOCALDATABASE', {
+  Mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
