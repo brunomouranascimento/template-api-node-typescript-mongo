@@ -35,7 +35,7 @@ class AuthService {
       const user = (await UserRepository.showByEmail(email)) as User;
 
       const tokenData = {
-        aud: 'api.com',
+        aud: 'com.template.api',
         user,
         tenant,
       };
