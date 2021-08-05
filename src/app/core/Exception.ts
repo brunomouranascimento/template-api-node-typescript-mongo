@@ -1,14 +1,14 @@
 export class Exception extends Error {
-  code: number;
+  code: number
 
-  type: string;
+  type: string
 
-  errors: Array<string> | undefined;
+  errors: Array<string> | undefined
 
   constructor(code: number, type: string, errors?: Array<string>) {
-    super();
-    this.code = code;
-    this.type = type;
-    this.errors = errors;
+    super()
+    this.code = code
+    this.type = type
+    this.errors = errors
   }
 }

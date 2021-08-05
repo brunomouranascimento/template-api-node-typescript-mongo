@@ -1,6 +1,6 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'
 
-import mongoose from '@database/database';
+import mongoose from '@database/database'
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -39,14 +39,14 @@ const UserSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
   },
-});
+})
 
 UserSchema.pre<any>('save', async function (next) {
-  const hash = await bcrypt.hash(this.password, 10);
-  this.password = hash;
-  next();
-});
+  const hash = await bcrypt.hash(this.password, 10)
+  this.password = hash
+  next()
+})
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema)
 
-export default User;
+export default User

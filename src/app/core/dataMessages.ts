@@ -77,7 +77,7 @@ const dataMessages = () => {
       },
       httpCode: 500,
     },
-  ];
-};
+  ]
+}
 
-export default dataMessages;
+export default dataMessages

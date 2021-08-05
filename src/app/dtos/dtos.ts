@@ -1,5 +1,5 @@
-import AuthDTO from './authDTO';
-import NewTenantDTO from './newTenantDTO';
-import NewUserDTO from './newUserDTO';
+import AuthDTO from './authDTO'
+import NewTenantDTO from './newTenantDTO'
+import NewUserDTO from './newUserDTO'
 
-export { AuthDTO, NewTenantDTO, NewUserDTO };
+export { AuthDTO, NewTenantDTO, NewUserDTO }

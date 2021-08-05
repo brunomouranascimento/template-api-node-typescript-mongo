@@ -1,8 +1,8 @@
-import { Tenant } from '@interfaces';
+import { Tenant } from '@interfaces'
 
 export default interface NewUserDTO {
-  email: string;
-  password: string;
-  tenant: [Tenant];
-  isAdmin: string;
+  email: string
+  password: string
+  tenant: [Tenant]
+  isAdmin: string
 }

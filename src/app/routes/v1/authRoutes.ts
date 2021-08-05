@@ -1,12 +1,12 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import AuthMiddleware from '@middlewares/authMiddleware';
-import AuthController from '@controllers/v1/AuthController';
+import AuthMiddleware from '@middlewares/authMiddleware'
+import AuthController from '@controllers/v1/AuthController'
 
-const authRouter = Router();
+const authRouter = Router()
 
-authRouter.use(AuthMiddleware);
+authRouter.use(AuthMiddleware)
 
-authRouter.post('/', AuthController.authenticate);
+authRouter.post('/', AuthController.authenticate)
 
-export default authRouter;
+export default authRouter

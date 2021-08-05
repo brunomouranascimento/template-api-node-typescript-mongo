@@ -1,4 +1,4 @@
-import mongoose from '@database/database';
+import mongoose from '@database/database'
 
 const TenantSchema = new mongoose.Schema({
   name: {
@@ -21,8 +21,8 @@ const TenantSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-});
+})
 
-const Tenant = mongoose.model('Tenant', TenantSchema);
+const Tenant = mongoose.model('Tenant', TenantSchema)
 
-export default Tenant;
+export default Tenant

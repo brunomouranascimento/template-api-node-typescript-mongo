@@ -175,7 +175,7 @@ const businessMessages = () => {
       },
       httpCode: 404,
     },
-  ];
-};
+  ]
+}
 
-export default businessMessages;
+export default businessMessages
