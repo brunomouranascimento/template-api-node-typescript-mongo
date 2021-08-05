@@ -1,4 +1,4 @@
-export class ApiException extends Error {
+export class Exception extends Error {
   code: number;
 
   type: string;

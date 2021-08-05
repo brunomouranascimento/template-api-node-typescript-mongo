@@ -35,7 +35,7 @@ class ApiResponse {
     };
 
     const selectedResponse =
-      type === 'BusinessResponse'
+      type && type === 'BusinessResponse'
         ? businessMessages().find((m: any) => m.responseCode === responseCode)
         : dataMessages().find((m: any) => m.responseCode === responseCode);
 
@@ -59,6 +59,13 @@ class ApiResponse {
     if (!apiErrors) delete response.errors;
 
     if (data) response.data = data;
+
+    if (!selectedResponse?.httpCode) {
+      delete response.DataResponse;
+      delete response.BusinessResponse;
+      response.notificationLevel = 'errror';
+      response.httpCode = 500;
+    }
 
     return res.status(response.httpCode).json(response);
   }

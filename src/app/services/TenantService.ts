@@ -1,6 +1,6 @@
-import { ApiException } from '@core/ApiException';
-import { Tenant } from '@interfaces';
 import TenantRepository from '@repositories/TenantRepository';
+import { Exception } from '@core/Exception';
+import { Tenant } from '@interfaces';
 import { NewTenantDTO } from '@dtos';
 
 class TenantService {
@@ -9,15 +9,16 @@ class TenantService {
       const { name, cnpj, email } = newTenantData;
 
       if (!name || !cnpj || !email) {
-        throw new ApiException(5000, 'BusinessResponse');
+        throw new Exception(5000, 'BusinessResponse');
       }
       const tenantExists = await TenantRepository.showByCNPJ(cnpj);
 
-      if (tenantExists) throw new ApiException(5001, 'BusinessResponse');
+      if (tenantExists) throw new Exception(5001, 'BusinessResponse');
 
       return await TenantRepository.store(newTenantData);
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -25,7 +26,8 @@ class TenantService {
     try {
       return (await TenantRepository.index()) as [Tenant];
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -33,11 +35,12 @@ class TenantService {
     try {
       const tenant = (await TenantRepository.show(id)) as Tenant;
 
-      if (!tenant) throw new ApiException(5002, 'BusinessResponse');
+      if (!tenant) throw new Exception(5002, 'BusinessResponse');
 
       return tenant;
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -45,11 +48,12 @@ class TenantService {
     try {
       const tenant = await TenantRepository.show(id);
 
-      if (!tenant) throw new ApiException(5002, 'BusinessResponse');
+      if (!tenant) throw new Exception(5002, 'BusinessResponse');
 
       return await TenantRepository.update(id, tenantData);
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -57,11 +61,12 @@ class TenantService {
     try {
       const tenant = await TenantRepository.show(id);
 
-      if (!tenant) throw new ApiException(5002, 'BusinessResponse');
+      if (!tenant) throw new Exception(5002, 'BusinessResponse');
 
       return await TenantRepository.destroy(id);
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 }

@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import AuthRepository from '@repositories/AuthRepository';
 import UserRepository from '@repositories/UserRepository';
 import TenantRepository from '@repositories/TenantRepository';
-import { ApiException } from '@core/ApiException';
+import { Exception } from '@core/Exception';
 import { User } from '@interfaces';
 import { AuthDTO } from '@dtos';
 import { generateToken } from '@utils/util';
@@ -17,19 +17,19 @@ class AuthService {
         authData,
       )) as User;
 
-      if (!userExists) throw new ApiException(4015, 'BusinessResponse');
+      if (!userExists) throw new Exception(4015, 'BusinessResponse');
 
       if (!tenant && !userExists.isAdmin)
-        throw new ApiException(4020, 'BusinessResponse');
+        throw new Exception(4020, 'BusinessResponse');
 
       if (!userExists.isAdmin) {
         const tenantExists = await TenantRepository.show(tenant);
 
-        if (!tenantExists) throw new ApiException(5002, 'BusinessResponse');
+        if (!tenantExists) throw new Exception(5002, 'BusinessResponse');
       }
 
       if (!(await bcrypt.compare(password, userExists.password))) {
-        throw new ApiException(4016, 'BusinessResponse');
+        throw new Exception(4016, 'BusinessResponse');
       }
 
       const user = (await UserRepository.showByEmail(email)) as User;
@@ -44,7 +44,8 @@ class AuthService {
 
       return user;
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type);
     }
   }
 }

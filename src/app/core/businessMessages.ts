@@ -154,7 +154,7 @@ const businessMessages = () => {
       httpCode: 401,
     },
     {
-      reseponseCode: 5001,
+      responseCode: 5001,
       status: 'error',
       message: {
         localizedString: {

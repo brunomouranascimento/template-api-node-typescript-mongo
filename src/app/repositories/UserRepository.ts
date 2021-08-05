@@ -1,5 +1,5 @@
 import User from '@models/userModel';
-import { ApiException } from '@core/ApiException';
+import { Exception } from '@core/Exception';
 import { NewUserDTO } from '@dtos';
 
 class UserRepository {
@@ -7,7 +7,8 @@ class UserRepository {
     try {
       return await User.create(newUserData);
     } catch (error) {
-      throw new ApiException(1001, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1001, 'DataResponse', [error.message]);
     }
   }
 
@@ -15,7 +16,8 @@ class UserRepository {
     try {
       return await User.find().lean().exec();
     } catch (error) {
-      throw new ApiException(1000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1000, 'DataResponse', [error.message]);
     }
   }
 
@@ -23,15 +25,8 @@ class UserRepository {
     try {
       return await User.findById(id).lean().exec();
     } catch (error) {
-      throw new ApiException(1000, 'DataResponse', [error.message]);
-    }
-  }
-
-  async update(id: string, userData: NewUserDTO) {
-    try {
-      return User.findByIdAndUpdate(id, { userData }, { new: true });
-    } catch (error) {
-      throw new ApiException(2002, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1000, 'DataResponse', [error.message]);
     }
   }
 
@@ -39,7 +34,8 @@ class UserRepository {
     try {
       await User.findByIdAndRemove(id);
     } catch (error) {
-      throw new ApiException(1000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1000, 'DataResponse', [error.message]);
     }
   }
 
@@ -49,7 +45,8 @@ class UserRepository {
 
       return await User.findOne({ email }).select('+password').lean().exec();
     } catch (error) {
-      throw new ApiException(1000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1000, 'DataResponse', [error.message]);
     }
   }
 
@@ -57,7 +54,8 @@ class UserRepository {
     try {
       return await User.findOne({ email }).lean().exec();
     } catch (error) {
-      throw new ApiException(1000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(1000, 'DataResponse', [error.message]);
     }
   }
 }

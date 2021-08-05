@@ -1,6 +1,6 @@
 import UserRepository from '@repositories/UserRepository';
 import { validEmail } from '@utils/util';
-import { ApiException } from '@core/ApiException';
+import { Exception } from '@core/Exception';
 import { User } from '@interfaces';
 import { NewUserDTO } from '@dtos';
 
@@ -10,17 +10,18 @@ class UserService {
       const { email } = newUserData;
 
       if (!email.match(validEmail)) {
-        throw new ApiException(4019, 'BusinessResponse');
+        throw new Exception(4019, 'BusinessResponse');
       }
       const userExists = await UserRepository.showByEmail(email);
 
-      if (userExists) throw new ApiException(4018, 'BusinessResponse');
+      if (userExists) throw new Exception(4018, 'BusinessResponse');
 
       await UserRepository.store(newUserData);
 
       return (await UserRepository.showByEmail(email)) as User;
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -28,7 +29,8 @@ class UserService {
     try {
       return (await UserRepository.index()) as [User];
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -36,23 +38,12 @@ class UserService {
     try {
       const user = (await UserRepository.show(id)) as User;
 
-      if (!user) throw new ApiException(4015, 'BusinessResponse');
+      if (!user) throw new Exception(4015, 'BusinessResponse');
 
       return user;
     } catch (error) {
-      throw new ApiException(error.code, error.type);
-    }
-  }
-
-  async update(id: string, userData: NewUserDTO) {
-    try {
-      const user = await UserRepository.show(id);
-
-      if (!user) throw new ApiException(5002, 'BusinessResponse');
-
-      return await UserRepository.update(id, userData);
-    } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 
@@ -60,11 +51,12 @@ class UserService {
     try {
       const user = await UserRepository.show(id);
 
-      if (!user) throw new ApiException(4015, 'BusinessResponse');
+      if (!user) throw new Exception(4015, 'BusinessResponse');
 
       return await UserRepository.destroy(id);
     } catch (error) {
-      throw new ApiException(error.code, error.type);
+      console.error(error);
+      throw new Exception(error.code, error.type, error);
     }
   }
 }
