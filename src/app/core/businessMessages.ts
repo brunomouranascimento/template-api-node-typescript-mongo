@@ -7,7 +7,7 @@ const businessMessages = () => {
     },
     {
       responseCode: 201,
-      status: 'success',
+      status: 'succes',
       httpCode: 201
     },
     {

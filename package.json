@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/accept-language-parser": "^1.5.2",
     "@types/bcrypt": "^3.0.0",
     "@types/bcryptjs": "^2.4.2",
