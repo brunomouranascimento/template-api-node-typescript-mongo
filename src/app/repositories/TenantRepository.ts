@@ -1,5 +1,5 @@
 import Tenant from '@models/tenantModel';
-import { ApiException } from '@core/ApiException';
+import { Exception } from '@core/Exception';
 import { NewTenantDTO } from '@dtos';
 
 class TenantRepository {
@@ -7,7 +7,8 @@ class TenantRepository {
     try {
       return await Tenant.create(newTenantData);
     } catch (error) {
-      throw new ApiException(2001, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2001, 'DataResponse', [error.message]);
     }
   }
 
@@ -15,7 +16,8 @@ class TenantRepository {
     try {
       return await Tenant.find().lean().exec();
     } catch (error) {
-      throw new ApiException(2000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2000, 'DataResponse', [error.message]);
     }
   }
 
@@ -23,15 +25,19 @@ class TenantRepository {
     try {
       return await Tenant.findById(id).lean().exec();
     } catch (error) {
-      throw new ApiException(2000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2000, 'DataResponse', [error.message]);
     }
   }
 
-  async update(id: string, tenantData: NewTenantDTO) {
+  async update(id: string, updatedTenantData: NewTenantDTO) {
     try {
-      return Tenant.findByIdAndUpdate(id, { tenantData }, { new: true });
+      const { name, cnpj, email } = updatedTenantData;
+
+      return Tenant.findByIdAndUpdate(id, { name, cnpj, email }, { new: true });
     } catch (error) {
-      throw new ApiException(2002, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2002, 'DataResponse', [error.message]);
     }
   }
 
@@ -39,7 +45,8 @@ class TenantRepository {
     try {
       await Tenant.findByIdAndRemove(id);
     } catch (error) {
-      throw new ApiException(2000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2000, 'DataResponse', [error.message]);
     }
   }
 
@@ -47,7 +54,8 @@ class TenantRepository {
     try {
       return await Tenant.findOne({ cnpj }).lean().exec();
     } catch (error) {
-      throw new ApiException(2000, 'DataResponse', [error.message]);
+      console.error(error);
+      throw new Exception(2000, 'DataResponse', [error.message]);
     }
   }
 }

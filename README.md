@@ -6,7 +6,8 @@
 - MongoDB
 - Typescript
 - Mongoose
-- Teste unitários com JEST
+- Testes unitários com JEST
+- Documentação da API com Swagger
 
 # Introdução
 
