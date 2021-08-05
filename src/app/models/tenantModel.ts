@@ -3,24 +3,24 @@ import mongoose from '@database/database'
 const TenantSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   cnpj: {
     type: String,
     unique: true,
     required: true,
-    trim: true,
+    trim: true
   },
   email: {
     type: String,
     required: true,
     select: false,
     lowercase: true,
-    trim: true,
+    trim: true
   },
   address: {
-    type: String,
-  },
+    type: String
+  }
 })
 
 const Tenant = mongoose.model('Tenant', TenantSchema)

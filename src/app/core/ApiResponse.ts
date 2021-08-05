@@ -31,7 +31,7 @@ class ApiResponse {
       notificationLevel: '',
       errors: [],
       BusinessResponse: 0,
-      DataResponse: 0,
+      DataResponse: 0
     }
 
     const selectedResponse =

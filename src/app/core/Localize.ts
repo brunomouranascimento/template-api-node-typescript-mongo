@@ -9,7 +9,7 @@ class Localize {
       ...object,
       message: object.message
         ? object.message.localizedString[selectedLanguage || defaultLanguage]
-        : undefined,
+        : undefined
     }
   }
 

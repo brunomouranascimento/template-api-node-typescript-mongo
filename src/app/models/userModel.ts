@@ -5,40 +5,40 @@ import mongoose from '@database/database'
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   email: {
     type: String,
     unique: true,
     required: true,
     lowercase: true,
-    trim: true,
+    trim: true
   },
   password: {
     type: String,
     required: true,
-    select: false,
+    select: false
   },
   tenants: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Tenant',
-    },
+      ref: 'Tenant'
+    }
   ],
   token: {
-    type: String,
+    type: String
   },
   passwordResetToken: {
     type: String,
-    select: false,
+    select: false
   },
   passwordResetExpires: {
     type: Date,
-    select: false,
+    select: false
   },
   isAdmin: {
-    type: Boolean,
-  },
+    type: Boolean
+  }
 })
 
 UserSchema.pre<any>('save', async function (next) {

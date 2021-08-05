@@ -5,7 +5,7 @@ const connect = () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false,
+    useFindAndModify: false
   })
     .then(() => {
       return console.info('✅ - Connected to Database')

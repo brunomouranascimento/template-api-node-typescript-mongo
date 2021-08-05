@@ -37,7 +37,7 @@ class AuthService {
       const tokenData = {
         aud: 'com.template.api',
         user,
-        tenant,
+        tenant
       }
 
       user.token = generateToken(tokenData)

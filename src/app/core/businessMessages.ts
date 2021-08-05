@@ -3,12 +3,12 @@ const businessMessages = () => {
     {
       responseCode: 200,
       status: 'success',
-      httpCode: 200,
+      httpCode: 200
     },
     {
       responseCode: 201,
       status: 'success',
-      httpCode: 201,
+      httpCode: 201
     },
     {
       responseCode: 401,
@@ -16,10 +16,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Invalid token or expired',
-          pt: 'Token inválido ou expirado',
-        },
+          pt: 'Token inválido ou expirado'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 404,
@@ -27,10 +27,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'The route you requested does not exist in this API',
-          pt: 'A rota que você solicitou não existe nesta API',
-        },
+          pt: 'A rota que você solicitou não existe nesta API'
+        }
       },
-      httpCode: 404,
+      httpCode: 404
     },
     {
       responseCode: 4011,
@@ -38,10 +38,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'No token provided',
-          pt: 'Token não fornecido',
-        },
+          pt: 'Token não fornecido'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 4012,
@@ -49,10 +49,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Token error',
-          pt: 'Erro de token',
-        },
+          pt: 'Erro de token'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 4013,
@@ -60,10 +60,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Malformatted token',
-          pt: 'Token mal-formado',
-        },
+          pt: 'Token mal-formado'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 4014,
@@ -71,10 +71,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Error on authenticating',
-          pt: 'Erro ao autenticar',
-        },
+          pt: 'Erro ao autenticar'
+        }
       },
-      httpCode: 500,
+      httpCode: 500
     },
     {
       responseCode: 4015,
@@ -82,10 +82,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'User not found',
-          pt: 'Usuário não encontrado',
-        },
+          pt: 'Usuário não encontrado'
+        }
       },
-      httpCode: 404,
+      httpCode: 404
     },
     {
       responseCode: 4016,
@@ -93,10 +93,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Invalid user/password',
-          pt: 'Usuário/senha inválidos',
-        },
+          pt: 'Usuário/senha inválidos'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 4017,
@@ -104,10 +104,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Registration failed',
-          pt: 'Registro falhou',
-        },
+          pt: 'Registro falhou'
+        }
       },
-      httpCode: 500,
+      httpCode: 500
     },
     {
       responseCode: 4018,
@@ -115,10 +115,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'User already exists',
-          pt: 'Usuário já existe',
-        },
+          pt: 'Usuário já existe'
+        }
       },
-      httpCode: 409,
+      httpCode: 409
     },
     {
       responseCode: 4019,
@@ -126,10 +126,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Invalid e-mail',
-          pt: 'E-mail inválido',
-        },
+          pt: 'E-mail inválido'
+        }
       },
-      httpCode: 400,
+      httpCode: 400
     },
     {
       responseCode: 4020,
@@ -137,10 +137,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Tenant is required',
-          pt: 'Tenant é obrigatório',
-        },
+          pt: 'Tenant é obrigatório'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 5000,
@@ -148,10 +148,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Name, cnpj and e-mail are required',
-          pt: 'Nome, cnpj e e-mail são obrigatórios',
-        },
+          pt: 'Nome, cnpj e e-mail são obrigatórios'
+        }
       },
-      httpCode: 401,
+      httpCode: 401
     },
     {
       responseCode: 5001,
@@ -159,10 +159,10 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Tenant already exists',
-          pt: 'Tenant já existe',
-        },
+          pt: 'Tenant já existe'
+        }
       },
-      httpCode: 409,
+      httpCode: 409
     },
     {
       responseCode: 5002,
@@ -170,11 +170,11 @@ const businessMessages = () => {
       message: {
         localizedString: {
           en: 'Tenant not found',
-          pt: 'Tenant não encontrado',
-        },
+          pt: 'Tenant não encontrado'
+        }
       },
-      httpCode: 404,
-    },
+      httpCode: 404
+    }
   ]
 }
 
