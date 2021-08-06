@@ -2,7 +2,7 @@ import UserRepository from '@repositories/UserRepository'
 import { validEmail } from '@utils/util'
 import { Exception } from '@core/Exception'
 import { User } from '@interfaces'
-import { NewUserDTO } from '@dtos'
+import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 
 class UserService {
   async store(newUserData: NewUserDTO) {
@@ -41,6 +41,19 @@ class UserService {
       if (!user) throw new Exception(4015, 'BusinessResponse')
 
       return user
+    } catch (error) {
+      console.error(error)
+      throw new Exception(error.code, error.type, error)
+    }
+  }
+
+  async update(id: string, updatedUserData: UpdatedUserDTO) {
+    try {
+      const tenant = await UserRepository.show(id)
+
+      if (!tenant) throw new Exception(4015, 'BusinessResponse')
+
+      return await UserRepository.update(id, updatedUserData)
     } catch (error) {
       console.error(error)
       throw new Exception(error.code, error.type, error)

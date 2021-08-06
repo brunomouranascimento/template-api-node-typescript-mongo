@@ -1,7 +1,7 @@
 import TenantRepository from '@repositories/TenantRepository'
 import { Exception } from '@core/Exception'
 import { Tenant } from '@interfaces'
-import { NewTenantDTO } from '@dtos'
+import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 
 class TenantService {
   async store(newTenantData: NewTenantDTO) {
@@ -44,13 +44,13 @@ class TenantService {
     }
   }
 
-  async update(id: string, tenantData: NewTenantDTO) {
+  async update(id: string, updatedTenantData: UpdatedTenantDTO) {
     try {
       const tenant = await TenantRepository.show(id)
 
       if (!tenant) throw new Exception(5002, 'BusinessResponse')
 
-      return await TenantRepository.update(id, tenantData)
+      return await TenantRepository.update(id, updatedTenantData)
     } catch (error) {
       console.error(error)
       throw new Exception(error.code, error.type, error)

@@ -1,6 +1,6 @@
 import User from '@models/userModel'
 import { Exception } from '@core/Exception'
-import { NewUserDTO } from '@dtos'
+import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 
 class UserRepository {
   async store(newUserData: NewUserDTO) {
@@ -27,6 +27,21 @@ class UserRepository {
     } catch (error) {
       console.error(error)
       throw new Exception(1000, 'DataResponse', [error.message])
+    }
+  }
+
+  async update(id: string, updatedUserData: UpdatedUserDTO) {
+    try {
+      const { email, password, tenant, isAdmin } = updatedUserData
+
+      return User.findByIdAndUpdate(
+        id,
+        { email, password, tenant, isAdmin },
+        { new: true }
+      )
+    } catch (error) {
+      console.error(error)
+      throw new Exception(2002, 'DataResponse', [error.message])
     }
   }
 

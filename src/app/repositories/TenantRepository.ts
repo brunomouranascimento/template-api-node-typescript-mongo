@@ -1,6 +1,6 @@
 import Tenant from '@models/tenantModel'
 import { Exception } from '@core/Exception'
-import { NewTenantDTO } from '@dtos'
+import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 
 class TenantRepository {
   async store(newTenantData: NewTenantDTO) {
@@ -30,7 +30,7 @@ class TenantRepository {
     }
   }
 
-  async update(id: string, updatedTenantData: NewTenantDTO) {
+  async update(id: string, updatedTenantData: UpdatedTenantDTO) {
     try {
       const { name, cnpj, email } = updatedTenantData
 
