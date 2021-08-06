@@ -1,6 +1,6 @@
 import mongoose from '@database/database'
 
-const TenantSchema = new mongoose.Schema({
+const tenantSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -23,6 +23,6 @@ const TenantSchema = new mongoose.Schema({
   }
 })
 
-const Tenant = mongoose.model('Tenant', TenantSchema)
+const Tenant = mongoose.model('Tenant', tenantSchema)
 
 export default Tenant
