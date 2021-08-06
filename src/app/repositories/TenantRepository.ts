@@ -32,9 +32,7 @@ class TenantRepository {
 
   async update(id: string, updatedTenantData: UpdatedTenantDTO) {
     try {
-      const { name, cnpj, email } = updatedTenantData
-
-      return Tenant.findByIdAndUpdate(id, { name, cnpj, email }, { new: true })
+      return Tenant.findByIdAndUpdate(id, updatedTenantData, { new: true })
     } catch (error) {
       console.error(error)
       throw new Exception(2002, 'DataResponse', [error.message])

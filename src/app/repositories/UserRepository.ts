@@ -32,13 +32,7 @@ class UserRepository {
 
   async update(id: string, updatedUserData: UpdatedUserDTO) {
     try {
-      const { email, tenants, isAdmin } = updatedUserData
-
-      return User.findByIdAndUpdate(
-        id,
-        { email, tenants, isAdmin },
-        { new: true }
-      )
+      return User.findByIdAndUpdate(id, updatedUserData, { new: true })
     } catch (error) {
       console.error(error)
       throw new Exception(2002, 'DataResponse', [error.message])
