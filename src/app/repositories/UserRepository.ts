@@ -32,11 +32,11 @@ class UserRepository {
 
   async update(id: string, updatedUserData: UpdatedUserDTO) {
     try {
-      const { email, password, tenant, isAdmin } = updatedUserData
+      const { email, tenants, isAdmin } = updatedUserData
 
       return User.findByIdAndUpdate(
         id,
-        { email, password, tenant, isAdmin },
+        { email, tenants, isAdmin },
         { new: true }
       )
     } catch (error) {
