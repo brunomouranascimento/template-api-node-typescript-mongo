@@ -4,6 +4,9 @@ import UserRepository from '@repositories/UserRepository'
 import { validEmail } from '@utils/util'
 import { User } from '@interfaces'
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
+import { Logger } from '@utils/logger'
+
+const log = Logger('ProductService')
 
 class UserService {
   async store(newUserData: NewUserDTO) {
@@ -21,7 +24,7 @@ class UserService {
 
       return (await UserRepository.showByEmail(email)) as User
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -30,7 +33,7 @@ class UserService {
     try {
       return (await UserRepository.index()) as [User]
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -43,7 +46,7 @@ class UserService {
 
       return user
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -56,7 +59,7 @@ class UserService {
 
       return await UserRepository.update(id, updatedUserData)
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -69,7 +72,7 @@ class UserService {
 
       return await UserRepository.destroy(id)
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }

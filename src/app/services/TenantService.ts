@@ -3,6 +3,9 @@ import TenantRepository from '@repositories/TenantRepository'
 
 import { Tenant } from '@interfaces'
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
+import { Logger } from '@utils/logger'
+
+const log = Logger('ProductService')
 
 class TenantService {
   async store(newTenantData: NewTenantDTO) {
@@ -18,7 +21,7 @@ class TenantService {
 
       return await TenantRepository.store(newTenantData)
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -27,7 +30,7 @@ class TenantService {
     try {
       return (await TenantRepository.index()) as [Tenant]
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -40,7 +43,7 @@ class TenantService {
 
       return tenant
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -53,7 +56,7 @@ class TenantService {
 
       return await TenantRepository.update(id, updatedTenantData)
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -66,7 +69,7 @@ class TenantService {
 
       return await TenantRepository.destroy(id)
     } catch (error) {
-      console.error(error)
+      log('error', error)
       throw new Exception(error.code, error.type, error)
     }
   }
