@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
-import TenantService from '@services/TenantService'
 import ApiResponse from '@core/ApiResponse'
+import TenantService from '@services/TenantService'
 
 import { ResponseData, Tenant } from '@interfaces'
 

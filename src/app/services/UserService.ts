@@ -1,6 +1,7 @@
-import UserRepository from '@repositories/UserRepository'
-import { validEmail } from '@utils/util'
 import { Exception } from '@core/Exception'
+import UserRepository from '@repositories/UserRepository'
+
+import { validEmail } from '@utils/util'
 import { User } from '@interfaces'
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 

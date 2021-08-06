@@ -1,5 +1,6 @@
-import TenantRepository from '@repositories/TenantRepository'
 import { Exception } from '@core/Exception'
+import TenantRepository from '@repositories/TenantRepository'
+
 import { Tenant } from '@interfaces'
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
-import UserService from '@services/UserService'
 import ApiResponse from '@core/ApiResponse'
+import UserService from '@services/UserService'
 
 import { ResponseData, User } from '@interfaces'
 

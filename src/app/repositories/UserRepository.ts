@@ -1,5 +1,6 @@
-import User from '@models/userModel'
 import { Exception } from '@core/Exception'
+import User from '@models/userModel'
+
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 
 class UserRepository {

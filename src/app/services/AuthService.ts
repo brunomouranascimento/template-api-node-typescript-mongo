@@ -1,9 +1,10 @@
 import bcrypt from 'bcryptjs'
 
+import { Exception } from '@core/Exception'
 import AuthRepository from '@repositories/AuthRepository'
 import UserRepository from '@repositories/UserRepository'
 import TenantRepository from '@repositories/TenantRepository'
-import { Exception } from '@core/Exception'
+
 import { User } from '@interfaces'
 import { AuthDTO } from '@dtos'
 import { generateToken } from '@utils/util'

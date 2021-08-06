@@ -1,5 +1,6 @@
-import Tenant from '@models/tenantModel'
 import { Exception } from '@core/Exception'
+import Tenant from '@models/tenantModel'
+
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 
 class TenantRepository {
