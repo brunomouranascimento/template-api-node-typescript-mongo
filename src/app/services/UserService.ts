@@ -6,7 +6,7 @@ import { User } from '@interfaces'
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('UserService')
 
 class UserService {
   async store(newUserData: NewUserDTO) {

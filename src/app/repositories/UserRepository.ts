@@ -4,7 +4,7 @@ import User from '@models/userModel'
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('UserRepository')
 
 class UserRepository {
   async store(newUserData: NewUserDTO) {

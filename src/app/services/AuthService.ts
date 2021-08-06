@@ -10,7 +10,7 @@ import { AuthDTO } from '@dtos'
 import { generateToken } from '@utils/util'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('AuthService')
 
 class AuthService {
   async authenticate(authData: AuthDTO) {

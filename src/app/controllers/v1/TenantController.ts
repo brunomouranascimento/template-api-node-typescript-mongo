@@ -6,7 +6,7 @@ import TenantService from '@services/TenantService'
 import { ResponseData, Tenant } from '@interfaces'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('TenantController')
 
 class TenantController {
   async store(req: Request, res: Response): Promise<ResponseData<Tenant>> {

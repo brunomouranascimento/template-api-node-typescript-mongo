@@ -5,7 +5,7 @@ import { Tenant } from '@interfaces'
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('TenantService')
 
 class TenantService {
   async store(newTenantData: NewTenantDTO) {

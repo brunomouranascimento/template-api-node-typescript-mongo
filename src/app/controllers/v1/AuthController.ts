@@ -6,7 +6,7 @@ import AuthService from '@services/AuthService'
 import { ResponseData, User } from '@interfaces'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('AuthController')
 
 class AuthController {
   async authenticate(req: Request, res: Response): Promise<ResponseData<User>> {

@@ -4,7 +4,7 @@ import Tenant from '@models/tenantModel'
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('TenantRepository')
 
 class TenantRepository {
   async store(newTenantData: NewTenantDTO) {

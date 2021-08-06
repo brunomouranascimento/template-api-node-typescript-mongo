@@ -6,7 +6,7 @@ import UserService from '@services/UserService'
 import { ResponseData, User } from '@interfaces'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('UserController')
 
 class UserController {
   async store(req: Request, res: Response): Promise<ResponseData<User>> {

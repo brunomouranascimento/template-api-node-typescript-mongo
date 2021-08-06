@@ -4,7 +4,7 @@ import User from '@models/userModel'
 import { AuthDTO } from '@dtos'
 import { Logger } from '@utils/logger'
 
-const log = Logger('ProductService')
+const log = Logger('AuthRepository')
 
 class AuthRepository {
   async findUserWithPassword(authData: AuthDTO) {
