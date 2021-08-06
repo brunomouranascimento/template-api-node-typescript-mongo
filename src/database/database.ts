@@ -1,5 +1,7 @@
 import Mongoose from 'mongoose'
 
+import { base } from '@models/base'
+
 const connect = () => {
   Mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
@@ -20,5 +22,7 @@ const connect = () => {
 connect()
 
 Mongoose.connection.on('disconnected', connect)
+
+Mongoose.plugin(base)
 
 export default Mongoose
