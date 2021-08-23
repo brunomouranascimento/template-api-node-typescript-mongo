@@ -4,9 +4,6 @@ import ApiResponse from '@core/ApiResponse'
 import UserService from '@services/UserService'
 
 import { ResponseData, User } from '@interfaces'
-import { Logger } from '@utils/logger'
-
-const log = Logger('UserController')
 
 class UserController {
   async store(req: Request, res: Response): Promise<ResponseData<User>> {
@@ -14,7 +11,7 @@ class UserController {
       const data = await UserService.store(req.body)
       return ApiResponse.send(201, req, res, data)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, null, errors, type)
     }
@@ -25,7 +22,7 @@ class UserController {
       const data = await UserService.index()
       return ApiResponse.send(200, req, res, data)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, null, errors, type)
     }
@@ -36,7 +33,7 @@ class UserController {
       const data = await UserService.show(req.params.id)
       return ApiResponse.send(200, req, res, data)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, null, errors, type)
     }
@@ -47,7 +44,7 @@ class UserController {
       const data = await UserService.update(req.params.id, req.body)
       return ApiResponse.send(200, req, res, data)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, null, errors, type)
     }
@@ -58,7 +55,7 @@ class UserController {
       const data = await UserService.destroy(req.params.id)
       return ApiResponse.send(200, req, res, data)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, null, errors, type)
     }

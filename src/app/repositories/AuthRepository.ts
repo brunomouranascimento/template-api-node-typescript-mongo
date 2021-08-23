@@ -2,9 +2,6 @@ import { Exception } from '@core/Exception'
 import User from '@models/userModel'
 
 import { AuthDTO } from '@dtos'
-import { Logger } from '@utils/logger'
-
-const log = Logger('AuthRepository')
 
 class AuthRepository {
   async findUserWithPassword(authData: AuthDTO) {
@@ -13,7 +10,7 @@ class AuthRepository {
 
       return await User.findOne({ email }).select('+password').lean().exec()
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }

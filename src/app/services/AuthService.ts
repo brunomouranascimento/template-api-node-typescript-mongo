@@ -8,9 +8,6 @@ import TenantRepository from '@repositories/TenantRepository'
 import { User } from '@interfaces'
 import { AuthDTO } from '@dtos'
 import { generateToken } from '@utils/util'
-import { Logger } from '@utils/logger'
-
-const log = Logger('AuthService')
 
 class AuthService {
   async authenticate(authData: AuthDTO) {
@@ -48,7 +45,7 @@ class AuthService {
 
       return user
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(error.code, error.type)
     }
   }

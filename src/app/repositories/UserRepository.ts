@@ -2,16 +2,13 @@ import { Exception } from '@core/Exception'
 import User from '@models/userModel'
 
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
-import { Logger } from '@utils/logger'
-
-const log = Logger('UserRepository')
 
 class UserRepository {
   async store(newUserData: NewUserDTO) {
     try {
       return await User.create(newUserData)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1001, 'DataResponse', [error.message])
     }
   }
@@ -20,7 +17,7 @@ class UserRepository {
     try {
       return await User.find().lean().exec()
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -29,7 +26,7 @@ class UserRepository {
     try {
       return await User.findById(id).lean().exec()
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -38,7 +35,7 @@ class UserRepository {
     try {
       return User.findByIdAndUpdate(id, updatedUserData, { new: true })
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(2002, 'DataResponse', [error.message])
     }
   }
@@ -47,7 +44,7 @@ class UserRepository {
     try {
       await User.findByIdAndRemove(id)
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -58,7 +55,7 @@ class UserRepository {
 
       return await User.findOne({ email }).select('+password').lean().exec()
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -67,7 +64,7 @@ class UserRepository {
     try {
       return await User.findOne({ email }).lean().exec()
     } catch (error) {
-      log('error', error)
+      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
