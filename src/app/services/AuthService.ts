@@ -44,7 +44,7 @@ class AuthService {
       user.token = generateToken(tokenData)
 
       return user
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type)
     }

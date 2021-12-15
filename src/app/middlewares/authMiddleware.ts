@@ -34,7 +34,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       req.tenant = decoded.tenant
       return next()
     })
-  } catch (error) {
+  } catch (error: any) {
     const { errors, type } = error
     return ApiResponse.send(4014, req, res, null, errors, type)
   }

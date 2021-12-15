@@ -20,7 +20,7 @@ class UserService {
       await UserRepository.store(newUserData)
 
       return (await UserRepository.showByEmail(email)) as User
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -29,7 +29,7 @@ class UserService {
   async index() {
     try {
       return (await UserRepository.index()) as [User]
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -42,7 +42,7 @@ class UserService {
       if (!user) throw new Exception(4015, 'BusinessResponse')
 
       return user
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -55,7 +55,7 @@ class UserService {
       if (!tenant) throw new Exception(4015, 'BusinessResponse')
 
       return await UserRepository.update(id, updatedUserData)
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -68,7 +68,7 @@ class UserService {
       if (!user) throw new Exception(4015, 'BusinessResponse')
 
       return await UserRepository.destroy(id)
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }

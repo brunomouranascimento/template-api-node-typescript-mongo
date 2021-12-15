@@ -17,7 +17,7 @@ class TenantService {
       if (tenantExists) throw new Exception(5001, 'BusinessResponse')
 
       return await TenantRepository.store(newTenantData)
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -26,7 +26,7 @@ class TenantService {
   async index() {
     try {
       return (await TenantRepository.index()) as [Tenant]
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -39,7 +39,7 @@ class TenantService {
       if (!tenant) throw new Exception(5002, 'BusinessResponse')
 
       return tenant
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -52,7 +52,7 @@ class TenantService {
       if (!tenant) throw new Exception(5002, 'BusinessResponse')
 
       return await TenantRepository.update(id, updatedTenantData)
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
@@ -65,7 +65,7 @@ class TenantService {
       if (!tenant) throw new Exception(5002, 'BusinessResponse')
 
       return await TenantRepository.destroy(id)
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
       throw new Exception(error.code, error.type, error)
     }
