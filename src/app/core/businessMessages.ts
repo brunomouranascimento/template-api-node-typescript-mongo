@@ -129,7 +129,7 @@ const businessMessages = () => {
           pt: 'Tenant é obrigatório'
         }
       },
-      httpCode: 401
+      httpCode: 422
     },
     {
       responseCode: 5000,
@@ -143,7 +143,7 @@ const businessMessages = () => {
       httpCode: 404
     },
     {
-      responseCode: 5000,
+      responseCode: 6000,
       status: 'error',
       message: {
         localizedString: {
@@ -151,10 +151,10 @@ const businessMessages = () => {
           pt: 'Nome, cnpj e e-mail são obrigatórios'
         }
       },
-      httpCode: 401
+      httpCode: 422
     },
     {
-      responseCode: 5001,
+      responseCode: 6001,
       status: 'error',
       message: {
         localizedString: {

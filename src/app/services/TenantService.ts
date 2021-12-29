@@ -10,11 +10,11 @@ class TenantService {
       const { name, cnpj, email } = newTenantData
 
       if (!name || !cnpj || !email) {
-        throw new Exception(5000, 'BusinessResponse')
+        throw new Exception(6000, 'BusinessResponse')
       }
       const tenantExists = await TenantRepository.showByCNPJ(cnpj)
 
-      if (tenantExists) throw new Exception(5001, 'BusinessResponse')
+      if (tenantExists) throw new Exception(6001, 'BusinessResponse')
 
       return await TenantRepository.store(newTenantData)
     } catch (error: any) {
