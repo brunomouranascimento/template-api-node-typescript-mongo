@@ -81,17 +81,6 @@ const businessMessages = () => {
       status: 'error',
       message: {
         localizedString: {
-          en: 'User not found',
-          pt: 'Usuário não encontrado'
-        }
-      },
-      httpCode: 404
-    },
-    {
-      responseCode: 4016,
-      status: 'error',
-      message: {
-        localizedString: {
           en: 'Invalid user/password',
           pt: 'Usuário/senha inválidos'
         }
@@ -99,7 +88,7 @@ const businessMessages = () => {
       httpCode: 401
     },
     {
-      responseCode: 4017,
+      responseCode: 4016,
       status: 'error',
       message: {
         localizedString: {
@@ -110,7 +99,7 @@ const businessMessages = () => {
       httpCode: 500
     },
     {
-      responseCode: 4018,
+      responseCode: 4017,
       status: 'error',
       message: {
         localizedString: {
@@ -121,7 +110,7 @@ const businessMessages = () => {
       httpCode: 409
     },
     {
-      responseCode: 4019,
+      responseCode: 4018,
       status: 'error',
       message: {
         localizedString: {
@@ -132,7 +121,7 @@ const businessMessages = () => {
       httpCode: 400
     },
     {
-      responseCode: 4020,
+      responseCode: 4019,
       status: 'error',
       message: {
         localizedString: {
@@ -141,6 +130,17 @@ const businessMessages = () => {
         }
       },
       httpCode: 401
+    },
+    {
+      responseCode: 5000,
+      status: 'error',
+      message: {
+        localizedString: {
+          en: 'Register not found',
+          pt: 'Registro não encontrado'
+        }
+      },
+      httpCode: 404
     },
     {
       responseCode: 5000,
@@ -163,17 +163,6 @@ const businessMessages = () => {
         }
       },
       httpCode: 409
-    },
-    {
-      responseCode: 5002,
-      status: 'error',
-      message: {
-        localizedString: {
-          en: 'Tenant not found',
-          pt: 'Tenant não encontrado'
-        }
-      },
-      httpCode: 404
     }
   ]
 }

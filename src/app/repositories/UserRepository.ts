@@ -8,7 +8,6 @@ class UserRepository {
     try {
       return await User.create(newUserData)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1001, 'DataResponse', [error.message])
     }
   }
@@ -17,7 +16,6 @@ class UserRepository {
     try {
       return await User.find().lean().exec()
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -26,7 +24,6 @@ class UserRepository {
     try {
       return await User.findById(id).lean().exec()
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -35,7 +32,6 @@ class UserRepository {
     try {
       return User.findByIdAndUpdate(id, updatedUserData, { new: true })
     } catch (error: any) {
-      console.log(error)
       throw new Exception(2002, 'DataResponse', [error.message])
     }
   }
@@ -44,7 +40,6 @@ class UserRepository {
     try {
       await User.findByIdAndRemove(id)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -55,7 +50,6 @@ class UserRepository {
 
       return await User.findOne({ email }).select('+password').lean().exec()
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
@@ -64,7 +58,6 @@ class UserRepository {
     try {
       return await User.findOne({ email }).lean().exec()
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }

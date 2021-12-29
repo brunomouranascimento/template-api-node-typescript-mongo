@@ -11,7 +11,6 @@ class AuthController {
       const data = await AuthService.authenticate(req.body)
       return ApiResponse.send(200, req, res, data)
     } catch (error: any) {
-      console.log(error)
       const { code, errors, type } = error
       return ApiResponse.send(code, req, res, undefined, errors, type)
     }

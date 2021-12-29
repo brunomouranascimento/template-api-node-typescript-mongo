@@ -2,8 +2,9 @@ import { Exception } from '@core/Exception'
 import Tenant from '@models/tenantModel'
 
 import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
+import { getModel } from '../utils/util'
 
-class TenantRepository {
+class BaseRepository {
   async store(newTenantData: NewTenantDTO) {
     try {
       return await Tenant.create(newTenantData)
@@ -12,17 +13,17 @@ class TenantRepository {
     }
   }
 
-  async index() {
+  async index(reqUrl: string) {
     try {
-      return await Tenant.find().lean().exec()
+      return await getModel(reqUrl).find().lean().exec()
     } catch (error: any) {
       throw new Exception(2000, 'DataResponse', [error.message])
     }
   }
 
-  async show(id: string) {
+  async show(id: string, reqUrl: string) {
     try {
-      return await Tenant.findById(id).lean().exec()
+      return await getModel(reqUrl).findById(id).lean().exec()
     } catch (error: any) {
       throw new Exception(2000, 'DataResponse', [error.message])
     }
@@ -36,21 +37,13 @@ class TenantRepository {
     }
   }
 
-  async destroy(id: string) {
+  async destroy(id: string, reqUrl: string) {
     try {
-      await Tenant.findByIdAndRemove(id)
-    } catch (error: any) {
-      throw new Exception(2000, 'DataResponse', [error.message])
-    }
-  }
-
-  async showByCNPJ(cnpj: string) {
-    try {
-      return await Tenant.findOne({ cnpj }).lean().exec()
+      await getModel(reqUrl).findByIdAndRemove(id)
     } catch (error: any) {
       throw new Exception(2000, 'DataResponse', [error.message])
     }
   }
 }
 
-export default new TenantRepository()
+export default new BaseRepository()

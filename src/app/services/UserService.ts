@@ -11,17 +11,16 @@ class UserService {
       const { email } = newUserData
 
       if (!email.match(validEmail)) {
-        throw new Exception(4019, 'BusinessResponse')
+        throw new Exception(4018, 'BusinessResponse')
       }
       const userExists = await UserRepository.showByEmail(email)
 
-      if (userExists) throw new Exception(4018, 'BusinessResponse')
+      if (userExists) throw new Exception(4017, 'BusinessResponse')
 
       await UserRepository.store(newUserData)
 
       return (await UserRepository.showByEmail(email)) as User
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -30,7 +29,6 @@ class UserService {
     try {
       return (await UserRepository.index()) as [User]
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -39,11 +37,10 @@ class UserService {
     try {
       const user = (await UserRepository.show(id)) as User
 
-      if (!user) throw new Exception(4015, 'BusinessResponse')
+      if (!user) throw new Exception(5000, 'BusinessResponse')
 
       return user
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -52,11 +49,10 @@ class UserService {
     try {
       const tenant = await UserRepository.show(id)
 
-      if (!tenant) throw new Exception(4015, 'BusinessResponse')
+      if (!tenant) throw new Exception(5000, 'BusinessResponse')
 
       return await UserRepository.update(id, updatedUserData)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -65,11 +61,10 @@ class UserService {
     try {
       const user = await UserRepository.show(id)
 
-      if (!user) throw new Exception(4015, 'BusinessResponse')
+      if (!user) throw new Exception(5000, 'BusinessResponse')
 
       return await UserRepository.destroy(id)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }

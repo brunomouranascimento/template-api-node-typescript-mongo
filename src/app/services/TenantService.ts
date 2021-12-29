@@ -18,7 +18,6 @@ class TenantService {
 
       return await TenantRepository.store(newTenantData)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -27,7 +26,6 @@ class TenantService {
     try {
       return (await TenantRepository.index()) as [Tenant]
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -40,7 +38,6 @@ class TenantService {
 
       return tenant
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -53,7 +50,6 @@ class TenantService {
 
       return await TenantRepository.update(id, updatedTenantData)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
@@ -66,7 +62,6 @@ class TenantService {
 
       return await TenantRepository.destroy(id)
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }

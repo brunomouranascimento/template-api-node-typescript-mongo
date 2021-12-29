@@ -10,7 +10,6 @@ class AuthRepository {
 
       return await User.findOne({ email }).select('+password').lean().exec()
     } catch (error: any) {
-      console.log(error)
       throw new Exception(1000, 'DataResponse', [error.message])
     }
   }

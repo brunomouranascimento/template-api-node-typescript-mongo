@@ -18,10 +18,10 @@ class AuthService {
         authData
       )) as User
 
-      if (!userExists) throw new Exception(4015, 'BusinessResponse')
+      if (!userExists) throw new Exception(5000, 'BusinessResponse')
 
       if (!tenant && !userExists.isAdmin)
-        throw new Exception(4020, 'BusinessResponse')
+        throw new Exception(4019, 'BusinessResponse')
 
       if (!userExists.isAdmin) {
         const tenantExists = await TenantRepository.show(tenant)
@@ -30,7 +30,7 @@ class AuthService {
       }
 
       if (!(await bcrypt.compare(password, userExists.password))) {
-        throw new Exception(4016, 'BusinessResponse')
+        throw new Exception(4015, 'BusinessResponse')
       }
 
       const user = (await UserRepository.showByEmail(email)) as User
@@ -45,7 +45,6 @@ class AuthService {
 
       return user
     } catch (error: any) {
-      console.log(error)
       throw new Exception(error.code, error.type)
     }
   }

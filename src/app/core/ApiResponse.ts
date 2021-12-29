@@ -9,7 +9,7 @@ class ApiResponse {
     req: any,
     res: any,
     data?: any,
-    apiErrors?: Array<any>,
+    apiErrors?: any,
     type = 'BusinessResponse'
   ): Promise<ResponseData<any>> {
     const language = Localize.prepareAcceptLanguageHeader(
@@ -54,9 +54,9 @@ class ApiResponse {
 
     response = Localize.localize(response, language, 'en')
 
-    if (apiErrors) response.errors = apiErrors
+    if (apiErrors) response.errors = apiErrors?.errors
 
-    if (!apiErrors) delete response.errors
+    if (!apiErrors?.errors) delete response.errors
 
     if (data) response.data = data
 
