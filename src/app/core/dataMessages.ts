@@ -5,8 +5,8 @@ const dataMessages = () => {
       status: 'error',
       message: {
         localizedString: {
-          en: 'Error on findind user(s)',
-          pt: 'Erro ao encontrar usuário(s)'
+          en: 'Error on findind register(s)',
+          pt: 'Erro ao encontrar registro(s)'
         }
       },
       httpCode: 500
@@ -16,8 +16,8 @@ const dataMessages = () => {
       status: 'error',
       message: {
         localizedString: {
-          en: 'Error on creating user(s)',
-          pt: 'Erro ao criar usuário(s)'
+          en: 'Error on creating register(s)',
+          pt: 'Erro ao criar registro(s)'
         }
       },
       httpCode: 500
@@ -27,52 +27,19 @@ const dataMessages = () => {
       status: 'error',
       message: {
         localizedString: {
-          en: 'Error on removing user(s)',
-          pt: 'Erro ao remover usuário(s)'
+          en: 'Error on removing register(s)',
+          pt: 'Erro ao remover registro(s)'
         }
       },
       httpCode: 500
     },
     {
-      responseCode: 2000,
+      responseCode: 1003,
       status: 'error',
       message: {
         localizedString: {
-          en: 'Error on finding tenant(s)',
-          pt: 'Erro ao encontrar tenant(s)'
-        }
-      },
-      httpCode: 500
-    },
-    {
-      responseCode: 2001,
-      status: 'error',
-      message: {
-        localizedString: {
-          en: 'Error on creating tenant(s)',
-          pt: 'Erro ao criar tenant(s)'
-        }
-      },
-      httpCode: 500
-    },
-    {
-      responseCode: 2002,
-      status: 'error',
-      message: {
-        localizedString: {
-          en: 'Error on updating tenant',
-          pt: 'Erro ao atualizar tenant'
-        }
-      },
-      httpCode: 500
-    },
-    {
-      responseCode: 2003,
-      status: 'error',
-      message: {
-        localizedString: {
-          en: 'Error on removing tenant',
-          pt: 'Erro ao remover tenant'
+          en: 'Error on updating register',
+          pt: 'Erro ao atualizar registro'
         }
       },
       httpCode: 500

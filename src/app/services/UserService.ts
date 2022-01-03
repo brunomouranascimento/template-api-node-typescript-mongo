@@ -4,9 +4,10 @@ import UserRepository from '@repositories/UserRepository'
 import { validEmail } from '@utils/util'
 import { User } from '@interfaces'
 import { NewUserDTO, UpdatedUserDTO } from '@dtos'
+import BaseRepository from '@repositories/BaseRepository'
 
 class UserService {
-  async store(newUserData: NewUserDTO) {
+  async store(newUserData: NewUserDTO, entity: string) {
     try {
       const { email } = newUserData
 
@@ -17,53 +18,9 @@ class UserService {
 
       if (userExists) throw new Exception(4017, 'BusinessResponse')
 
-      await UserRepository.store(newUserData)
+      await BaseRepository.store(newUserData, entity)
 
       return (await UserRepository.showByEmail(email)) as User
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async index() {
-    try {
-      return (await UserRepository.index()) as [User]
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async show(id: string) {
-    try {
-      const user = (await UserRepository.show(id)) as User
-
-      if (!user) throw new Exception(5000, 'BusinessResponse')
-
-      return user
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async update(id: string, updatedUserData: UpdatedUserDTO) {
-    try {
-      const tenant = await UserRepository.show(id)
-
-      if (!tenant) throw new Exception(5000, 'BusinessResponse')
-
-      return await UserRepository.update(id, updatedUserData)
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async destroy(id: string) {
-    try {
-      const user = await UserRepository.show(id)
-
-      if (!user) throw new Exception(5000, 'BusinessResponse')
-
-      return await UserRepository.destroy(id)
     } catch (error: any) {
       throw new Exception(error.code, error.type, error)
     }

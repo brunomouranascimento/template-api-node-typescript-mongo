@@ -1,11 +1,11 @@
 import { Exception } from '@core/Exception'
 import TenantRepository from '@repositories/TenantRepository'
 
-import { Tenant } from '@interfaces'
-import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
+import { NewTenantDTO } from '@dtos'
+import BaseRepository from '@repositories/BaseRepository'
 
 class TenantService {
-  async store(newTenantData: NewTenantDTO) {
+  async store(newTenantData: NewTenantDTO, entity: string) {
     try {
       const { name, cnpj, email } = newTenantData
 
@@ -16,51 +16,7 @@ class TenantService {
 
       if (tenantExists) throw new Exception(6001, 'BusinessResponse')
 
-      return await TenantRepository.store(newTenantData)
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async index() {
-    try {
-      return (await TenantRepository.index()) as [Tenant]
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async show(id: string) {
-    try {
-      const tenant = (await TenantRepository.show(id)) as Tenant
-
-      if (!tenant) throw new Exception(5002, 'BusinessResponse')
-
-      return tenant
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async update(id: string, updatedTenantData: UpdatedTenantDTO) {
-    try {
-      const tenant = await TenantRepository.show(id)
-
-      if (!tenant) throw new Exception(5002, 'BusinessResponse')
-
-      return await TenantRepository.update(id, updatedTenantData)
-    } catch (error: any) {
-      throw new Exception(error.code, error.type, error)
-    }
-  }
-
-  async destroy(id: string) {
-    try {
-      const tenant = await TenantRepository.show(id)
-
-      if (!tenant) throw new Exception(5002, 'BusinessResponse')
-
-      return await TenantRepository.destroy(id)
+      return await BaseRepository.store(newTenantData, entity)
     } catch (error: any) {
       throw new Exception(error.code, error.type, error)
     }

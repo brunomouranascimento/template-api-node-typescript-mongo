@@ -54,9 +54,9 @@ class ApiResponse {
 
     response = Localize.localize(response, language, 'en')
 
-    if (apiErrors) response.errors = apiErrors?.errors
+    if (apiErrors) response.errors = apiErrors?.errors || apiErrors?.message
 
-    if (!apiErrors?.errors) delete response.errors
+    if (!apiErrors?.errors && !apiErrors?.message) delete response.errors
 
     if (data) response.data = data
 

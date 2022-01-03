@@ -13,30 +13,30 @@ export const generateToken = (params = {}) => {
   })
 }
 
-export const getService = (reqUrl: string): any => {
-  switch (reqUrl) {
-    case '/v1/users':
+export const getService = (entity: string): any => {
+  switch (entity) {
+    case 'users':
       return UserService
-    case '/v1/tenants':
+    case 'tenants':
       return TenantService
     default:
       break
   }
 }
 
-export const getRepository = (reqUrl: string): any => {
-  switch (reqUrl) {
-    case '/v1/users':
+export const getRepository = (entity: string): any => {
+  switch (entity) {
+    case 'users':
       return UserService
-    case '/v1/tenants':
+    case 'tenants':
       return TenantService
     default:
       break
   }
 }
 
-export const getModel = (reqUrl: string): any => {
-  switch (reqUrl?.split('/')[2]) {
+export const getModel = (entity: string): any => {
+  switch (entity) {
     case 'users':
       return User
     case 'tenants':

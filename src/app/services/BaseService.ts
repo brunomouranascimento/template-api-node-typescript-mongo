@@ -1,23 +1,19 @@
 import { Exception } from '@core/Exception'
-import TenantRepository from '@repositories/TenantRepository'
 
-import { Tenant } from '@interfaces'
-import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
-import { getRepository } from '@utils/util'
 import BaseRepository from '@repositories/BaseRepository'
 
 class BaseService {
-  async index(reqUrl: string) {
+  async index(entity: string) {
     try {
-      return await BaseRepository.index(reqUrl)
+      return await BaseRepository.index(entity)
     } catch (error: any) {
       throw new Exception(error.code, error.type, error)
     }
   }
 
-  async show(id: string, reqUrl: string) {
+  async show(id: string, entity: string) {
     try {
-      const data = await BaseRepository.show(id, reqUrl)
+      const data = await BaseRepository.show(id, entity)
 
       if (!data) throw new Exception(5000, 'BusinessResponse')
 
@@ -27,25 +23,26 @@ class BaseService {
     }
   }
 
-  async update(id: string, updatedTenantData: UpdatedTenantDTO) {
+  async update(id: string, updatedData: any, entity: string) {
     try {
-      const tenant = await TenantRepository.show(id)
+      const data = await BaseRepository.show(id, entity)
 
-      if (!tenant) throw new Exception(5002, 'BusinessResponse')
+      if (!data) throw new Exception(5000, 'BusinessResponse')
 
-      return await TenantRepository.update(id, updatedTenantData)
+      return await BaseRepository.update(id, updatedData, entity)
     } catch (error: any) {
+      console.log(error)
       throw new Exception(error.code, error.type, error)
     }
   }
 
-  async destroy(id: string, reqUrl: string) {
+  async destroy(id: string, entity: string) {
     try {
-      const data = await BaseRepository.show(id, reqUrl)
+      const data = await BaseRepository.show(id, entity)
 
       if (!data) throw new Exception(5000, 'BusinessResponse')
 
-      return await TenantRepository.destroy(id)
+      return await BaseRepository.destroy(id, entity)
     } catch (error: any) {
       throw new Exception(error.code, error.type, error)
     }

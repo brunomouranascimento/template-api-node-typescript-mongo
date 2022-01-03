@@ -4,11 +4,14 @@ import swaggerUi from 'swagger-ui-express'
 import ApiResponse from '@core/ApiResponse'
 import documentation from '@documentation/swagger.json'
 
+import baseMiddleware from '@middlewares/baseMiddleware'
 import authRoutes from './v1/authRoutes'
 import userRoutes from './v1/userRoutes'
 import tenantRoutes from './v1/tenantRoutes'
 
 const routes = Router()
+
+routes.use(baseMiddleware)
 
 routes.use('/v1/auth', authRoutes)
 routes.use('/v1/users', userRoutes)

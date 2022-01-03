@@ -4,5 +4,6 @@ declare namespace Express {
       _id: string
     }
     tenant: string
+    entity: string
   }
 }

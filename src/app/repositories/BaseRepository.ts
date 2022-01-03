@@ -1,47 +1,46 @@
 import { Exception } from '@core/Exception'
-import Tenant from '@models/tenantModel'
 
-import { NewTenantDTO, UpdatedTenantDTO } from '@dtos'
 import { getModel } from '../utils/util'
 
 class BaseRepository {
-  async store(newTenantData: NewTenantDTO) {
+  async store(newData: any, entity: string) {
     try {
-      return await Tenant.create(newTenantData)
+      return await getModel(entity).create(newData)
     } catch (error: any) {
-      throw new Exception(2001, 'DataResponse', [error.message])
+      throw new Exception(1001, 'DataResponse', [error.message])
     }
   }
 
-  async index(reqUrl: string) {
+  async index(entity: string) {
     try {
-      return await getModel(reqUrl).find().lean().exec()
+      return await getModel(entity).find().lean().exec()
     } catch (error: any) {
-      throw new Exception(2000, 'DataResponse', [error.message])
+      throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
 
-  async show(id: string, reqUrl: string) {
+  async show(id: string, entity: string) {
     try {
-      return await getModel(reqUrl).findById(id).lean().exec()
+      return await getModel(entity).findById(id).lean().exec()
     } catch (error: any) {
-      throw new Exception(2000, 'DataResponse', [error.message])
+      throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
 
-  async update(id: string, updatedTenantData: UpdatedTenantDTO) {
+  async update(id: string, updatedData: any, entity: string) {
     try {
-      return Tenant.findByIdAndUpdate(id, updatedTenantData, { new: true })
+      return getModel(entity).findByIdAndUpdate(id, updatedData, { new: true })
     } catch (error: any) {
-      throw new Exception(2002, 'DataResponse', [error.message])
+      console.log(error)
+      throw new Exception(1003, 'DataResponse', [error.message])
     }
   }
 
-  async destroy(id: string, reqUrl: string) {
+  async destroy(id: string, entity: string) {
     try {
-      await getModel(reqUrl).findByIdAndRemove(id)
+      await getModel(entity).findByIdAndRemove(id)
     } catch (error: any) {
-      throw new Exception(2000, 'DataResponse', [error.message])
+      throw new Exception(1000, 'DataResponse', [error.message])
     }
   }
 }
