@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import { Exception } from '@core/Exception'
 import AuthRepository from '@repositories/AuthRepository'
 import UserRepository from '@repositories/UserRepository'
-import TenantRepository from '@repositories/TenantRepository'
+import BaseRepository from '@repositories/BaseRepository'
 
 import { User } from '@interfaces'
 import { AuthDTO } from '@dtos'
@@ -24,7 +24,7 @@ class AuthService {
         throw new Exception(4019, 'BusinessResponse')
 
       if (!userExists.isAdmin) {
-        const tenantExists = await TenantRepository.show(tenant)
+        const tenantExists = await BaseRepository.show(tenant, 'tenants')
 
         if (!tenantExists) throw new Exception(5002, 'BusinessResponse')
       }
