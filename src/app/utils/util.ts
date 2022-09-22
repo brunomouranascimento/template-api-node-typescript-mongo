@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
-import UserService from '@services/UserService'
-import TenantService from '@services/TenantService'
+import UserService from '@services/v1/UserService'
+import TenantService from '@services/v1/TenantService'
 import User from '@models/userModel'
 import Tenant from '@models/tenantModel'
 

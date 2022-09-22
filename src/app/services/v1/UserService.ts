@@ -1,5 +1,5 @@
 import { Exception } from '@core/Exception'
-import UserRepository from '@repositories/UserRepository'
+import UserRepository from '@repositories/v1/UserRepository'
 
 import { validEmail } from '@utils/util'
 import { User } from '@interfaces'

@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs'
 
 import { Exception } from '@core/Exception'
-import AuthRepository from '@repositories/AuthRepository'
-import UserRepository from '@repositories/UserRepository'
+import AuthRepository from '@repositories/v1/AuthRepository'
+import UserRepository from '@repositories/v1/UserRepository'
 import BaseRepository from '@repositories/BaseRepository'
 
 import { User } from '@interfaces'

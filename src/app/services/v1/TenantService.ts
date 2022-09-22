@@ -1,5 +1,5 @@
 import { Exception } from '@core/Exception'
-import TenantRepository from '@repositories/TenantRepository'
+import TenantRepository from '@repositories/v1/TenantRepository'
 
 import { NewTenantDTO } from '@dtos'
 import BaseRepository from '@repositories/BaseRepository'
