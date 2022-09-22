@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 import ApiResponse from '@core/ApiResponse'
-import AuthService from '@services/AuthService'
+import AuthService from '@services/v1/AuthService'
 
 import { ResponseData, User } from '@interfaces'
 
